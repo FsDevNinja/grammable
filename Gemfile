@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
-
+gem 'devise'
 gem 'bourbon', '~> 4.2', '>= 4.2.7'
 gem 'neat', '~> 1.8'
 gem 'sass', '~> 3.4', '>= 3.4.22'
-
+gem 'simple_form'
 
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
