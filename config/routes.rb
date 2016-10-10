@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   
   root "grams#index"
   
-  resources :grams, only: [:new,:create,:edit,:update, :show] 
+  resources :grams
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
