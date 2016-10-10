@@ -7,7 +7,7 @@ gem 'bourbon', '~> 4.2', '>= 4.2.7'
 gem 'neat', '~> 1.8'
 gem 'sass', '~> 3.4', '>= 3.4.22'
 gem 'simple_form'
-
+gem "factory_girl_rails", "~> 4.0"
 gem 'rails_12factor', group: :production
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
@@ -45,4 +45,3 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
