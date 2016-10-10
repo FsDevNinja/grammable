@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
+gem 'fog', '~> 1.38'
+gem 'figaro'
 gem 'devise'
 gem 'bourbon', '~> 4.2', '>= 4.2.7'
 gem 'neat', '~> 1.8'
@@ -14,7 +16,7 @@ gem 'rails', '4.1.9'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
-
+gem 'carrierwave', '>= 1.0.0.beta', '< 2.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
