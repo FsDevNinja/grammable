@@ -1,17 +1,27 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="form_wrapper">
+  <%= link_to root_url do %>
+  <%= image_tag "logo.png", class: "devise-logo"%>
+  <% end %>
+  <br class="clr">
+  <h3 class="sign_up_title">Sign up to see photos from your friends.</h3>
+  
+  
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  
   <%= f.error_notification %>
-
+  
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+    <%= f.input :email, placeholder: "Email", required: true, autofocus: true, label:false %>
+    <%= f.input :username, placeholder: "Username", required: true,label:false %>
+    <%= f.input :password, placeholder: "Password", required: true, label:false %>
+    <%= f.input :password_confirmation, placeholder: "Confirm Password", label:false, required: true %>
   </div>
-
+  
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <% end %>
+</div>
+<div class="devise_links">
+  <p>Have an account? <%= render "devise/shared/links" %></p>
+</div>
