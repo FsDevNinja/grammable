@@ -10,7 +10,8 @@
 </head>
 <body>
   
-  <% if params[:controller] != "devise/sessions" %>
+  <% if !params[:controller].start_with?("devise") %>
+  
   <%= render partial: 'layouts/nav' %>
   <%end%>
   <% if notice.present? %>
@@ -21,6 +22,7 @@
   <p class="alert"><%= alert %></p>
   <% end %>
   <%= yield %>
+  
   <script>(function($){
     
     $('.dark-mobile_nav').click(function() {

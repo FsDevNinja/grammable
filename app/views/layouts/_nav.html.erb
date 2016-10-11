@@ -8,6 +8,7 @@
     
     <div class="dark-nav nav">
       <% if current_user %>
+      <%= link_to "Add Gram", new_gram_path%>
       <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
       <p id="signed_in"><%= current_user.username%></p>
       

@@ -5,12 +5,34 @@ body {
   background-color: #fafafa;
   margin: 0;
   font-family: 'Josefin Sans', sans-serif;
+  overflow: hidden;
 }
 
 .gram_wrapper {
+  position: relative;
   margin-top: 150px;
   @include span-columns(10);
   @include shift(1);
+  
+}
+
+.gram {
+  @include span-columns(3);
+  @include omega(4n);
+  transition: all 1s ease;
+}
+
+.gram_selected {
+  position: absolute;
+  left: 0;
+  right: 0;
+  
+}
+
+.gram_row_selected {
+  position: absolute;
+  width: 1935px;
+  
 }
 
 .form_wrapper, .devise_links {
