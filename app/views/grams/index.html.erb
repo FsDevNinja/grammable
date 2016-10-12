@@ -1,34 +1,28 @@
-<div class="gram_wrapper">
-  <% @grams.in_groups_of(4) do |gram_row| %>
-  <div class="gram_row">
-    <% for gram in gram_row %>
-    <div class="gram">
-      <%= image_tag gram.picture, class: 'img-responsive' %>
+<div class="col-xs-12 gram_wrapper">
+  
+  <div class="slider-outer">
+    <div class="left_gram"></div>
+    <div class="slider-inner">
+      <a href="#" class="left-link"><%= image_tag 'left-arrow.png' %></a>
+      <div class="wrapper">
+        
+        <% @grams.each do |gram| %>
+        <div class="center-wrap">
+          <div class="slider_gram">
+            <%= image_tag gram.picture %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <a href="#" class="right-link"><%= image_tag 'right-arrow.png' %></a>
     </div>
-    <% end %>
+    <div class="right_gram"></div>
   </div>
-  <% end %>
+  
 </div>
 
 
+
 <script>
-$( document ).ready(function() {
-  
-  
-  var left_offset = ($(window).width() - 450)/2 -125
-  console.log(left_offset);
-  
-  
-  $(".gram").click(function(){
-    // var gram_row = $(this).parent()
-    // gram_row.toggleClass('gram_row_selected');
-    // gram_row.toggleClass('gram_row');
-    $(this).toggleClass('gram_selected')
-    
-  });
-  
-  
-  
-  
-});
+
 </script>

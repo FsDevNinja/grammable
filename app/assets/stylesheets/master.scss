@@ -1,39 +1,13 @@
-$mobile: new-breakpoint(max-width 500px);
+
 
 
 body {
   background-color: #fafafa;
   margin: 0;
   font-family: 'Josefin Sans', sans-serif;
-  overflow: hidden;
-}
-
-.gram_wrapper {
-  position: relative;
-  margin-top: 150px;
-  @include span-columns(10);
-  @include shift(1);
   
 }
 
-.gram {
-  @include span-columns(3);
-  @include omega(4n);
-  transition: all 1s ease;
-}
-
-.gram_selected {
-  position: absolute;
-  left: 0;
-  right: 0;
-  
-}
-
-.gram_row_selected {
-  position: absolute;
-  width: 1935px;
-  
-}
 
 .form_wrapper, .devise_links {
   
@@ -48,9 +22,7 @@ body {
   min-width: 300px;
   margin-top: 150px;
   
-  @include media($mobile) {
-    margin-top: 50px;
-  }
+  
   
   input {
     background: 0 0;
@@ -290,4 +262,101 @@ body {
   }
   
   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.gram_wrapper {
+  position: relative;
+  margin-top: 150px;
+  padding: 0 !important;
+  
+  
+}
+.center-wrap {
+  position: relative;
+  float: left;
+  width: 100%;
+  height: 450px;
+  
+}
+.slider_gram {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 450px;
+  height: 450px;
+  
+}
+
+.slider_gram img {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  float: left;
+}
+
+.slider-outer {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.left_gram,.right_gram, .slider-inner{
+  float: left;
+}
+
+.left_gram,.right_gram {
+  width: 20%;
+  position: absolute;
+  height: 450px;
+  z-index: 50;
+  
+}
+
+.left_gram {
+  left: 0px;
+}
+
+.right_gram {
+  right: 0px;
+}
+
+
+.wrapper {
+  position: absolute;
+  width:3700px;
+}
+
+.slider-inner {
+  height: 450px;
+  overflow: visible;
+  margin-left: 20%;
+  position: relative;
+}
+
+.left-link {
+  position: absolute;
+  left: 0;
+  z-index: 100;
+}
+
+.right-link {
+  position: absolute;
+  right: 0;
+  z-index: 100;
 }
