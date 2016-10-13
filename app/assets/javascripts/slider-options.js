@@ -12,7 +12,7 @@
       customHeight: 450,
       leftLink : ".left-link",
       rightLink : ".right-link",
-      autoSlide : true,
+      
     });
     
   });

@@ -12,9 +12,22 @@
     <div class="slider-inner">
       <a href="#" class="left-link"><%= image_tag 'left-arrow.png' %></a>
       <div class="wrapper">
-        
+        <% @grams.last(2).each do |gram| %>
+        <div class="center-wrap ">
+          <div class="slider_gram">
+            <%= image_tag gram.picture %>
+          </div>
+        </div>
+        <% end %>
         <% @grams.each_with_index do |gram, index| %>
         <div class="center-wrap " data-index="<%= index + 1 %>" data-message="<%= gram.message  %>">
+          <div class="slider_gram">
+            <%= image_tag gram.picture %>
+          </div>
+        </div>
+        <% end %>
+        <% @grams.first(2).each do |gram| %>
+        <div class="center-wrap ">
           <div class="slider_gram">
             <%= image_tag gram.picture %>
           </div>
