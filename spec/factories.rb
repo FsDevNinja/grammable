@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :like, class: 'Likes' do
+    
+  end
   factory :comment do
     
   end

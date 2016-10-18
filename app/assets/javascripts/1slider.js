@@ -24,20 +24,30 @@
       this.singleImageWidth = this.sliderOuter.width() - (this.leftGram.width() + this.rightGram.width());
       this.leftLink = $(this.options.leftLink);
       this.rightLink = $(this.options.rightLink);
-      this.init();
+      this.numberOfImages = ($('.gram').length) + 4;
+      
+      init(this, this.numberOfImages);
     }
     
     /*****************************************************
     *************** Slider Initialization ***************
     *****************************************************/
+    var slideIndex = 1;
+    var currentSlideData = {index: -1};
+    var contentFade = $('.content-fade');
+    var currentSlide = null
+    var numberOfImages = $('.gram').length;
+    console.log(currentSlideData);
+    console.log(numberOfImages);
     
-    gramSlider.prototype.init = function(){
+    function init(parent, numberOfImages){
       
-      var parent = this;
+      var parent = parent;
+      
       // setting numberOfImages variable
-      var numberOfImages = $(parent.sliderGram).length;
+      
       //setting width of grams
-      $(".center-wrap").width(parent.singleImageWidth);
+      $(".center-wrap").width(parent.singleImageWidth + "px");
       // setting width of slider wrapper
       parent.wrapper.width((numberOfImages * parent.singleImageWidth));
       // setting height of slider
@@ -46,6 +56,7 @@
       $(parent.sliderGram).height(parent.customHeight);
       
       //setting rightTrigger
+      console.log(numberOfImages);
       var rightTrigger = (parent.singleImageWidth * (numberOfImages - 3)* -1);
       console.log(rightTrigger);
       //storing wrapper position value
@@ -55,21 +66,31 @@
       var leftTrigger = (parent.singleImageWidth * -2);
       console.log(leftTrigger);
       
-      var slideIndex = null;
-      var currentSlide = null;
-      var contentFade = $('.content-fade');
       
+      /*****************************************************
+      ***************   initial click id ***************
+      *****************************************************/
       
-      
-      
+      function parseIndexFromId(id) {
+        var currentSlide = id.split("_");
+        return  parseInt(currentSlide[currentSlide.length -1]);
+      }
       
       /*****************************************************
       ***************   Show slider of grams ***************
       *****************************************************/
       
       $('.gram').on("click", function() {
-        var slideIndex = parseInt($(this).attr("data-index")) + 1;
-        console.log(slideIndex)
+        slideIndex = parseInt($(this).attr("data-index")) + 1;
+        currentSlideData.index = parseIndexFromId($(this).attr('id'));
+        //set initial value of gram content
+        var title = $("#carousel_slide_" + currentSlideData.index).attr("data-message")
+        $('#gram-title').text(title)
+        console.log(currentSlideData)
+        
+        
+        
+        
         $('.gram-content').animate({top: '450',opacity : 1}, "fast");
         $('.grid-grams').animate({top: 2000,opacity : 0}, "fast");
         $('.slider-outer').animate({top: 0, opacity : 1},"slow");
@@ -107,6 +128,36 @@
       
     });
     
+    /*****************************************************
+    ***************   Show Comments       ***************
+    *****************************************************/
+    
+    $('.comment_button').on("click", function(){
+      $('.content-fade').animate({"opacity" : '0'}, "slow");
+      $('.comment-fade').animate({"opacity" : '1'}, "slow");
+    });
+    
+    
+    /*****************************************************
+    *************** Update Gram Content ***************
+    *****************************************************/
+    
+    function contentUpdate(data, n, numberOfImages){
+      var numberOfImages = numberOfImages - 4
+      data.index += n;
+      if (data.index > numberOfImages) {
+        data.index = data.index % numberOfImages;
+        console.log(numberOfImages)
+      }
+      if (data.index < 1) {
+        data.index = numberOfImages;
+        console.log(numberOfImages)
+      }
+      
+      
+      var title = $("#carousel_slide_" + data.index).attr("data-message");
+      $('#gram-title').text(title);
+    }
     
     
     
@@ -129,16 +180,15 @@
       }
       
       // fade out gram content
-      contentFade.fadeOut(250);
-      console.log(slideIndex);
+      contentFade.fadeOut(250, contentUpdate(currentSlideData,1, numberOfImages));
+      
       
       
       // grab new gram content based on index
-      currentSlide = $('.center-wrap').find('[data-index ='slideIndex']');
-      $('gram-description').text = currentSlide.attr('data-message');
+      console.log(currentSlideData)
       //fade in gram content
-      contentFade.fadeIn(500);
-      slideIndex += 1;
+      contentFade.fadeIn(1000);
+      
     };
     
     /*****************************************************
@@ -160,6 +210,17 @@
         //if false just animate as usual
         parent.wrapper.animate({"left" : "+=" + parent.singleImageWidth + "px"}, parent.waitTime);
       }
+      
+      // fade out gram content
+      contentFade.fadeOut(250);
+      console.log(slideIndex);
+      
+      contentUpdate(currentSlideData,-1, numberOfImages);
+      // grab new gram content based on index
+      console.log(currentSlideData)
+      //fade in gram content
+      contentFade.fadeIn(1000);
+      slideIndex += 1;
       
     };
     
