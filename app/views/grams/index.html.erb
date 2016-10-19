@@ -20,7 +20,7 @@
         </div>
         <% end %>
         <% @grams.each_with_index do |gram, index | %>
-        <div class="center-wrap" id="carousel_slide_<%= index + 1 %>" data-index="<%= index + 1 %>" data-message="<%= gram.message  %>">
+        <div class="center-wrap" id="carousel_slide_<%= index + 1 %>" data-current-user="<%= current_user %>" data-gram-id="<%= gram.id %>" data-index="<%= index + 1 %>" data-destoy-url="<%= gram_likes_path(gram) %>" data-add-url="<%= gram_likes_path(gram) %>" data-message="<%= gram.message  %>" data-title="<%= gram.title  %>">
           <div class="slider_gram">
             <%= image_tag gram.picture %>
           </div>
@@ -45,16 +45,19 @@
       
       <div class="gram-icons">
         <hr class="clr">
-        <div class="col-xs-2 index-count"><div class="pull-left">13/48</div></div>
-        <div class="col-xs-8 text-center comment_button"><%= image_tag 'cha-rounded.png', class: "comment-icon" %>13 comments</div>
-        <div class="col-xs-2 heart-count"><div class="heart pull-right"><%= image_tag 'cel-heart.png', class: "heart-icon" %>525</div></div>
+        <div class="col-xs-2 index-count"><div class="pull-left" id="index-count">13/48</div></div>
+        <div class="col-xs-8 text-center"><a class="comment_button" href="#"><%= image_tag 'cha-rounded.png', class: "comment-icon" %>13 comments</a></div>
+        <div class="col-xs-2 heart-count"><div class="heart pull-right"><div class="ht heart-icon"></div>525</div></div>
       </div>
     </div>
     
     
     <div class="comment-fade">
       <h4 class="gram-title">Comments</h4>
+      <div class="comment-close"></div>
+      <div class="add-comment">
+        
+      </div>
     </div>
   </div>
-  
 </div>

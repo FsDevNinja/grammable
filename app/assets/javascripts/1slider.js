@@ -84,12 +84,13 @@
         slideIndex = parseInt($(this).attr("data-index")) + 1;
         currentSlideData.index = parseIndexFromId($(this).attr('id'));
         //set initial value of gram content
-        var title = $("#carousel_slide_" + currentSlideData.index).attr("data-message")
+        var title = $("#carousel_slide_" + currentSlideData.index).attr("data-title");
+        var message = $("#carousel_slide_" + currentSlideData.index).attr("data-message");
         $('#gram-title').text(title)
+        $('.gram-description').text(message);
+        var indexCount = currentSlideData.index + "/" + (numberOfImages - 4);
+        $('#index-count').text(indexCount);
         console.log(currentSlideData)
-        
-        
-        
         
         $('.gram-content').animate({top: '450',opacity : 1}, "fast");
         $('.grid-grams').animate({top: 2000,opacity : 0}, "fast");
@@ -125,7 +126,6 @@
       $('.gram-content').animate({"top": '2000',"opacity" : '0'}, "slow");
       $('.grid-grams').animate({"top": '0',"opacity" : '1'}, "slow");
       $('.slider-outer').animate({top: -450, opacity : 0},"fast");
-      
     });
     
     /*****************************************************
@@ -133,8 +133,9 @@
     *****************************************************/
     
     $('.comment_button').on("click", function(){
-      $('.content-fade').animate({"opacity" : '0'}, "slow");
-      $('.comment-fade').animate({"opacity" : '1'}, "slow");
+      $('.content-fade').animate({"top" : -500, "opacity" : '0'}, "slow");
+      $('.gram-content').animate({"top" : 600}, "slow");
+      $('.comment-fade').animate({"top" : "80px", "opacity" : '1'}, "slow");
     });
     
     
@@ -155,11 +156,19 @@
       }
       
       
-      var title = $("#carousel_slide_" + data.index).attr("data-message");
+      var title = $("#carousel_slide_" + data.index).attr("data-title");
+      var message = $("#carousel_slide_" + data.index).attr("data-message");
+      console.log(message)
       $('#gram-title').text(title);
+      $('.gram-description').text(message);
+      
+      var indexCount = data.index + "/" + numberOfImages;
+      $('#index-count').text(indexCount);
+      
+      
+      
+      
     }
-    
-    
     
     
     /*****************************************************

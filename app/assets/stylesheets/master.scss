@@ -121,7 +121,7 @@ body {
 }
 
 #dark_header_wrap {
-  z-index: 2;
+  z-index: 20000;
   top: 0;
   width: 100%;
   height: 100px;
@@ -305,7 +305,7 @@ body {
   max-width: 480px;
   height: 450px;
   margin-top: -225px;
-  z-index: -1;
+  z-index: 1;
   border-radius: 4px;
   padding: 15px;
   opacity: 0;
@@ -313,6 +313,10 @@ body {
 
 #gram-title {
   margin: 225px 0 10px;
+}
+
+.gram-title {
+  
 }
 
 .gram-description {
@@ -343,10 +347,41 @@ body {
 }
 
 .heart-icon {
+  float: left;
+  background-image: url('/assets/cel-heart.png');
+  background-size: 20px 20px;
   width: 20px;
-  height: auto;
+  height: 20px;
   margin-right: 10px;
 }
+
+.pink-heart-icon {
+  float: left;
+  background-image: url('/assets/cel-heart-pink.png');
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.comment-close {
+  position: absolute;
+  top: 10px;
+  left: 430px;
+  background-image: url('/assets/close.png');
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 500;
+}
+
+
+
+
+
+
+
+
 
 // Slider CSS
 
@@ -396,6 +431,7 @@ body {
   overflow: hidden;
   opacity: 0;
   top: -650px;
+  z-index: 2
 }
 
 .left_gram,.right_gram, .slider-inner{
@@ -444,5 +480,6 @@ body {
 }
 
 .comment-fade {
+  position: absolute;
   opacity: 0;
 }

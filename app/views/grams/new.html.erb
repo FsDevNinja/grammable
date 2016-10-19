@@ -1,10 +1,11 @@
-<div class="gram_wrapper">
+<div class="form_wrapper">
   <h1>New Gram</h1>
   
   <%= simple_form_for @gram do |f| %>
-  <%= f.input :picture %>
-  <%= f.input :title %>
-  <%= f.input :message %>
-  <%= f.submit "Post!" %>
+  <%= f.input :picture%>
+  <%= f.input :title, placeholder: "Title", required: true, label:false  %>
+  <%= f.input :message, placeholder: "Message", required: true, label:false %>
+  <br>
+  <%= f.submit "Post!", class: "btn btn-primary" %>
   <% end %>
 </div>
