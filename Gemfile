@@ -5,9 +5,9 @@ end
 gem 'fog', '~> 1.38'
 gem 'figaro'
 gem 'devise'
-gem 'bourbon', '~> 4.2', '>= 4.2.7'
-gem 'neat', '~> 1.8'
-gem 'sass', '~> 3.4', '>= 3.4.22'
+gem 'bootstrap-sass', '~> 3.3.5.1'
+gem 'sprockets', '2.11.0'
+gem 'sass-rails'
 gem 'simple_form'
 gem "factory_girl_rails", "~> 4.0"
 gem 'rails_12factor', group: :production

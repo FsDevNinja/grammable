@@ -7,10 +7,12 @@
   <%= csrf_meta_tags %>
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,100,300,600,700' rel='stylesheet' type='text/css'>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  
 </head>
 <body>
   
-  <% if params[:controller] != "devise/sessions" %>
+  <% if !params[:controller].start_with?("devise") %>
+  
   <%= render partial: 'layouts/nav' %>
   <%end%>
   <% if notice.present? %>
@@ -21,6 +23,7 @@
   <p class="alert"><%= alert %></p>
   <% end %>
   <%= yield %>
+  
   <script>(function($){
     
     $('.dark-mobile_nav').click(function() {

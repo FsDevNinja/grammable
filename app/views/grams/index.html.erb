@@ -1,11 +1,63 @@
-<div class="gram_wrapper">
-  <% @grams.each do |gram| %>
-  <div class="card">
-    <div class="handle"><%= gram.user.email %></div>
-    <%= image_tag gram.picture, class: 'img-responsive' %>
-    <p>
-      <%= gram.message %>
-    </p>
+<div class="col-xs-12 gram_wrapper">
+  <div class="grid-grams col-xs-12 ">
+    <% @grams.each_with_index do |gram, index| %>
+    <div class="gram col-xs-12 col-sm-6 col-md-4 col-lg-3" id="slide_<%= index + 1 %>" data-index="<%= index + 1 %>" >
+      <%= image_tag gram.picture %>
+    </div>
+    <% end %>
   </div>
-  <% end %>
+  
+  <div class="slider-outer">
+    <div class="left_gram"></div>
+    <div class="slider-inner">
+      <a href="#" class="left-link"><%= image_tag 'left-arrow.png' %></a>
+      <div class="wrapper">
+        <% @grams.last(2).each do |gram| %>
+        <div class="center-wrap ">
+          <div class="slider_gram">
+            <%= image_tag gram.picture %>
+          </div>
+        </div>
+        <% end %>
+        <% @grams.each_with_index do |gram, index | %>
+        <div class="center-wrap" id="carousel_slide_<%= index + 1 %>" data-current-user="<%= current_user %>" data-gram-id="<%= gram.id %>" data-index="<%= index + 1 %>" data-destoy-url="<%= gram_likes_path(gram) %>" data-add-url="<%= gram_likes_path(gram) %>" data-message="<%= gram.message  %>" data-title="<%= gram.title  %>">
+          <div class="slider_gram">
+            <%= image_tag gram.picture %>
+          </div>
+        </div>
+        <% end %>
+        <% @grams.first(2).each do |gram| %>
+        <div class="center-wrap ">
+          <div class="slider_gram">
+            <%= image_tag gram.picture %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <a href="#" class="right-link"><%= image_tag 'right-arrow.png' %></a>
+    </div>
+    <div class="right_gram"></div>
+  </div>
+  <div class="gram-content">
+    <div class="content-fade">
+      <h4 id="gram-title">Chicago Skyline</h4>
+      <div class="gram-description">A beautiful snap of chicago and the sears tower. I want to go back! #chicago #skyline #vacation #travel</div>
+      
+      <div class="gram-icons">
+        <hr class="clr">
+        <div class="col-xs-2 index-count"><div class="pull-left" id="index-count">13/48</div></div>
+        <div class="col-xs-8 text-center"><a class="comment_button" href="#"><%= image_tag 'cha-rounded.png', class: "comment-icon" %>13 comments</a></div>
+        <div class="col-xs-2 heart-count"><div class="heart pull-right"><div class="ht heart-icon"></div>525</div></div>
+      </div>
+    </div>
+    
+    
+    <div class="comment-fade">
+      <h4 class="gram-title">Comments</h4>
+      <div class="comment-close"></div>
+      <div class="add-comment">
+        
+      </div>
+    </div>
+  </div>
 </div>
